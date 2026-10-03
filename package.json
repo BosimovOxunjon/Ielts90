@@ -1,0 +1,12 @@
+{
+  "name": "ielts-master-90",
+  "version": "1.0.0",
+  "description": "IELTS 4-Skill Preparation & 90-Day Roadmap Platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["ielts", "study-plan", "ielts-preparation", "roadmap"],
+  "author": "",
+  "license": "MIT"
+}

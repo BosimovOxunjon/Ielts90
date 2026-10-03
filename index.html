@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IELTS Master 90 | 4-Skill Preparation & 90-Day Roadmap Platform</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-200">
+
+  <!-- Top Announcement / Timer Bar -->
+  <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Brand & Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-blue-400 flex items-center justify-center text-white font-extrabold text-lg shadow-md shadow-indigo-500/20">
+            90
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-slate-900 dark:text-white tracking-tight text-base sm:text-lg">IELTS MASTER 90</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 uppercase">
+                Band 8.0+ System
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">
+              3-Month Structured Roadmap • Listening, Reading, Writing, Speaking
+            </p>
+          </div>
+        </div>
+
+        <!-- Quick Focus Pomodoro Widget in Header -->
+        <div class="hidden lg:flex items-center gap-3 bg-slate-100 dark:bg-slate-800/80 px-3.5 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700">
+          <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 flex items-center gap-1">
+            ⏱️ Focus Session:
+          </span>
+          <span id="study-timer-display" class="font-mono text-sm font-bold text-indigo-600 dark:text-indigo-400 min-w-[48px]">
+            25:00
+          </span>
+          <div class="flex items-center gap-1">
+            <button id="timer-start-btn" title="Start Timer" class="p-1 rounded bg-indigo-600 hover:bg-indigo-700 text-white text-xs transition">
+              ▶
+            </button>
+            <button id="timer-pause-btn" title="Pause Timer" class="p-1 rounded bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 text-slate-700 dark:text-slate-200 text-xs transition">
+              ⏸
+            </button>
+            <button id="timer-reset-btn" title="Reset Timer" class="p-1 rounded bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 text-slate-700 dark:text-slate-200 text-xs transition">
+              ↺
+            </button>
+          </div>
+          <div class="flex items-center gap-1 border-l border-slate-200 dark:border-slate-700 pl-2">
+            <button class="timer-duration-btn text-[10px] px-1.5 py-0.5 rounded bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:text-indigo-600 font-semibold" data-mins="25">25m</button>
+            <button class="timer-duration-btn text-[10px] px-1.5 py-0.5 rounded bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:text-indigo-600 font-semibold" data-mins="45">45m</button>
+            <button class="timer-duration-btn text-[10px] px-1.5 py-0.5 rounded bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:text-indigo-600 font-semibold" data-mins="60">60m</button>
+          </div>
+        </div>
+
+        <!-- Controls: Exam Date, Target Band & Dark Mode -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Target Band Selector -->
+          <div class="flex items-center gap-1 text-xs">
+            <span class="text-slate-500 dark:text-slate-400 hidden md:inline">Target:</span>
+            <select id="target-band-select" class="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-2 py-1 text-xs font-bold text-indigo-600 dark:text-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+              <option value="6.5">Band 6.5</option>
+              <option value="7.0">Band 7.0</option>
+              <option value="7.5" selected>Band 7.5</option>
+              <option value="8.0">Band 8.0</option>
+              <option value="8.5">Band 8.5</option>
+              <option value="9.0">Band 9.0</option>
+            </select>
+          </div>
+
+          <!-- Exam Date Picker -->
+          <div class="hidden sm:flex items-center gap-1 text-xs">
+            <span class="text-slate-500 dark:text-slate-400 hidden xl:inline">Exam:</span>
+            <input type="date" id="exam-date-picker" class="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-2 py-1 text-xs text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+          </div>
+
+          <!-- Print / Export Plan Button -->
+          <button id="print-roadmap-btn" title="Print or Save PDF" class="p-2 rounded-xl text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 transition">
+            🖨️
+          </button>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle-btn" title="Toggle Dark/Light Mode" class="p-2 rounded-xl text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 transition">
+            🌓
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="flex items-center gap-1 sm:gap-2 overflow-x-auto py-2 border-t border-slate-100 dark:border-slate-800 text-xs sm:text-sm font-semibold scrollbar-none" id="main-nav-tabs">
+        <button class="nav-tab-btn px-3 py-2 rounded-lg border-b-2 border-indigo-600 text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5 whitespace-nowrap active transition" data-tab="roadmap">
+          🗺️ 90-Day Roadmap
+        </button>
+        <button class="nav-tab-btn px-3 py-2 rounded-lg border-b-2 border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 whitespace-nowrap transition" data-tab="listening">
+          🎧 Listening Lab
+        </button>
+        <button class="nav-tab-btn px-3 py-2 rounded-lg border-b-2 border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 whitespace-nowrap transition" data-tab="reading">
+          📖 Reading Lab
+        </button>
+        <button class="nav-tab-btn px-3 py-2 rounded-lg border-b-2 border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 whitespace-nowrap transition" data-tab="writing">
+          ✍️ Writing Studio
+        </button>
+        <button class="nav-tab-btn px-3 py-2 rounded-lg border-b-2 border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 whitespace-nowrap transition" data-tab="speaking">
+          🗣️ Speaking Simulator
+        </button>
+        <button class="nav-tab-btn px-3 py-2 rounded-lg border-b-2 border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 whitespace-nowrap transition" data-tab="calculator">
+          🧮 Band Calculator
+        </button>
+        <button class="nav-tab-btn px-3 py-2 rounded-lg border-b-2 border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 whitespace-nowrap transition" data-tab="journal">
+          📓 Error Log & Notes
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- ============================================================== -->
+    <!-- TAB 1: 90-DAY ROADMAP -->
+    <!-- ============================================================== -->
+    <section id="tab-roadmap" class="tab-panel space-y-6">
+      
+      <!-- Roadmap Hero Card with Progress Banner -->
+      <div class="bg-gradient-to-r from-indigo-700 via-indigo-600 to-blue-600 rounded-3xl p-6 sm:p-8 text-white shadow-xl shadow-indigo-600/10">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="space-y-2 max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-sm text-xs font-semibold">
+              <span id="days-remaining-badge" class="hidden">🎯 90 Days Remaining</span>
+              <span>•</span>
+              <span id="completed-days-count">0 of 90 Days Done</span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+              3-Month Master Roadmap: 90 Days to Band 8.0+
+            </h1>
+            <p class="text-indigo-100 text-xs sm:text-sm leading-relaxed">
+              Every day is meticulously mapped with dedicated skill drills, time allocations, official strategies, and action items. Complete your daily checklist to build unshakable academic stamina.
+            </p>
+          </div>
+
+          <!-- Overall Progress Ring / Bar -->
+          <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 min-w-[240px] border border-white/20">
+            <div class="flex justify-between items-center text-xs font-medium mb-2">
+              <span class="text-indigo-100">Overall Progress</span>
+              <span id="overall-progress-text" class="font-bold text-white">0% Completed (0/360 Tasks)</span>
+            </div>
+            <div class="w-full bg-black/20 rounded-full h-3 overflow-hidden p-0.5">
+              <div id="overall-progress-bar" class="bg-gradient-to-r from-emerald-400 to-teal-300 h-full rounded-full transition-all duration-500 w-0"></div>
+            </div>
+            <div class="flex justify-between items-center text-[10px] text-indigo-200 mt-2 font-mono">
+              <span>Day 1: Baseline</span>
+              <span>Day 45: Acceleration</span>
+              <span>Day 90: Exam Day</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Month Phase Indicators -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Month 1 Info -->
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Month 1 • Days 1-30</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300">Phase: Foundation</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white mb-1">Mechanics & Question Anatomy</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-normal">
+            Establish baseline, eliminate spelling pitfalls, master T/F/NG logic, Task 1 overview formulas, and Speaking 1-2-3 expansion.
+          </p>
+        </div>
+
+        <!-- Month 2 Info -->
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Month 2 • Days 31-60</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">Phase: Acceleration</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white mb-1">Speed, Passage 3 & Argumentation</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-normal">
+            Academic lectures at 1.25x speed, the 17-20-23 reading pacing rule, complex Map & Process writing, and Part 3 abstract discourse.
+          </p>
+        </div>
+
+        <!-- Month 3 Info -->
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">Month 3 • Days 61-90</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-purple-50 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300">Phase: Mastery</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white mb-1">Stamina, Full Mocks & Band 8.0+ Polish</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-normal">
+            Back-to-back written simulations (2h 45m), concession grammar, top 20 Band 9 sentence templates, and official dress rehearsals.
+          </p>
+        </div>
+      </div>
+
+      <!-- Filters & Search Toolbar -->
+      <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-4">
+        
+        <!-- Month Filter Tabs -->
+        <div class="flex items-center gap-1.5 overflow-x-auto w-full lg:w-auto">
+          <button class="month-filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 text-white shadow-sm transition" data-month="all">
+            All 90 Days
+          </button>
+          <button class="month-filter-btn px-4 py-2 rounded-xl text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition" data-month="1">
+            Month 1 (Days 1-30)
+          </button>
+          <button class="month-filter-btn px-4 py-2 rounded-xl text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition" data-month="2">
+            Month 2 (Days 31-60)
+          </button>
+          <button class="month-filter-btn px-4 py-2 rounded-xl text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition" data-month="3">
+            Month 3 (Days 61-90)
+          </button>
+        </div>
+
+        <!-- Skill Filter Pills & Search -->
+        <div class="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
+          <!-- Skill Filter Pills -->
+          <div class="flex items-center gap-1 overflow-x-auto w-full sm:w-auto">
+            <button class="skill-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 transition" data-skill="all">
+              All
+            </button>
+            <button class="skill-filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition" data-skill="listening">
+              🎧 Listening
+            </button>
+            <button class="skill-filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition" data-skill="reading">
+              📖 Reading
+            </button>
+            <button class="skill-filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition" data-skill="writing">
+              ✍️ Writing
+            </button>
+            <button class="skill-filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition" data-skill="speaking">
+              🗣️ Speaking
+            </button>
+            <button class="skill-filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition" data-skill="mock">
+              🏆 Mocks
+            </button>
+          </div>
+
+          <!-- Search Input -->
+          <div class="relative w-full sm:w-56">
+            <input type="text" id="roadmap-search" placeholder="Search roadmap..." class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-8">
+            <span class="absolute left-2.5 top-2 text-slate-400 text-xs">🔍</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Roadmap Grid (Rendered by app.js) -->
+      <div id="roadmap-cards-container" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        <!-- Injected via JavaScript -->
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 2: LISTENING LAB -->
+    <!-- ============================================================== -->
+    <section id="tab-listening" class="tab-panel hidden space-y-6">
+      
+      <!-- Listening Header Banner -->
+      <div class="bg-gradient-to-r from-blue-700 to-indigo-800 rounded-3xl p-6 sm:p-8 text-white shadow-lg">
+        <div class="max-w-3xl space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-xs font-semibold">
+            🎧 4 Sections • 40 Questions • 30 Mins Audio • 35/40 = Band 8.0
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">IELTS Listening Laboratory</h2>
+          <p class="text-blue-100 text-xs sm:text-sm leading-relaxed">
+            The listening test tests your ability to understand main ideas, specific factual details, speaker opinions, and academic arguments. Train your ears to catch distractors, connected speech, and tricky numbers.
+          </p>
+        </div>
+      </div>
+
+      <!-- Section Anatomy Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <span class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase">Section 1</span>
+          <h4 class="font-bold text-slate-900 dark:text-white mt-1 mb-2">Social Dialogue</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+            Two speakers in everyday social situations (booking hotels, renting cars, reporting lost property).
+          </p>
+          <div class="text-[11px] font-semibold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/50 p-2 rounded-lg">
+            Trap: Self-corrections and numbers (15 vs 50, spelling surnames).
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Section 2</span>
+          <h4 class="font-bold text-slate-900 dark:text-white mt-1 mb-2">General Monologue</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+            One speaker giving a talk about a local facility, museum guide, or orientation briefing.
+          </p>
+          <div class="text-[11px] font-semibold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/50 p-2 rounded-lg">
+            Trap: Multiple Choice options with spoken distractors and map labeling.
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <span class="text-xs font-bold text-purple-600 dark:text-purple-400 uppercase">Section 3</span>
+          <h4 class="font-bold text-slate-900 dark:text-white mt-1 mb-2">Academic Discussion</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+            Up to 4 speakers (students & tutor) discussing an assignment, research project, or dissertation.
+          </p>
+          <div class="text-[11px] font-semibold text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/50 p-2 rounded-lg">
+            Trap: Rapid conversational shifts, agreement vs polite dissent.
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Section 4</span>
+          <h4 class="font-bold text-slate-900 dark:text-white mt-1 mb-2">University Lecture</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+            A continuous academic lecture by one professor on a scholarly topic with zero pauses in between.
+          </p>
+          <div class="text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 p-2 rounded-lg">
+            Trap: Losing your place in the notes. Rely on signpost headings.
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Listening Drill Simulator -->
+      <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-700 mb-5">
+          <div>
+            <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+              <span>🔊</span> Interactive Audio Simulator: Car Rental Booking (Section 1)
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              Click "Play Audio Dialogue" to hear the conversation spoken by the synthesizer, then fill in the missing fields.
+            </p>
+          </div>
+          <button id="play-listening-audio-btn" class="px-4 py-2 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-sm flex items-center justify-center gap-2 transition">
+            <span>▶</span> Play Audio Dialogue
+          </button>
+        </div>
+
+        <div class="max-w-xl space-y-4">
+          <div class="p-4 bg-slate-50 dark:bg-slate-900/60 rounded-xl border border-slate-200 dark:border-slate-700">
+            <h4 class="font-bold text-xs uppercase tracking-wider text-slate-500 mb-3">
+              Form Completion: City Car Rental Reservation
+            </h4>
+            <div class="space-y-3 text-xs">
+              <div>
+                <label class="block text-slate-600 dark:text-slate-300 font-medium mb-1">
+                  1. Customer Surname:
+                </label>
+                <input type="text" id="listening-q1-input" placeholder="Enter spelled surname..." class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-xs text-slate-900 dark:text-white focus:ring-1 focus:ring-blue-500">
+              </div>
+
+              <div>
+                <label class="block text-slate-600 dark:text-slate-300 font-medium mb-1">
+                  2. Mobile Phone Number (Watch for self-correction!):
+                </label>
+                <input type="text" id="listening-q2-input" placeholder="Enter contact number..." class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-xs text-slate-900 dark:text-white focus:ring-1 focus:ring-blue-500">
+              </div>
+
+              <div>
+                <label class="block text-slate-600 dark:text-slate-300 font-medium mb-1">
+                  3. Commencement Date of Rental:
+                </label>
+                <input type="text" id="listening-q3-input" placeholder="e.g. 14th October" class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-xs text-slate-900 dark:text-white focus:ring-1 focus:ring-blue-500">
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button id="check-listening-answers-btn" class="px-4 py-2 bg-slate-900 dark:bg-white dark:text-slate-900 text-white rounded-xl text-xs font-semibold hover:opacity-90 transition">
+              Check Answers
+            </button>
+            <span class="text-xs text-slate-500">Tip: Spelling and exact digits are strictly assessed!</span>
+          </div>
+
+          <div id="listening-results-div" class="hidden"></div>
+        </div>
+      </div>
+
+      <!-- Top 50 Tricky IELTS Spelling Pitfalls Reference -->
+      <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+        <h3 class="font-bold text-base text-slate-900 dark:text-white mb-2">
+          📝 The Top 40 Most Commonly Misspelled IELTS Listening Words
+        </h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+          Over 60% of lost marks in IELTS Listening are caused by misspelled words rather than poor hearing. Review these frequently tested words:
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-2.5 text-xs font-mono">
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">accommodation</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">environment</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">government</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">questionnaire</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">millennium</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">embarrassed</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">definitely</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">restaurant</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">Wednesday</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">February</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">recommend</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">convenient</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">exhibition</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">maintenance</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">occasionally</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">privilege</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">separate</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">disappointed</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">necessary</div>
+          <div class="bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-200">architecture</div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 3: READING LAB -->
+    <!-- ============================================================== -->
+    <section id="tab-reading" class="tab-panel hidden space-y-6">
+      
+      <!-- Reading Banner -->
+      <div class="bg-gradient-to-r from-emerald-700 to-teal-800 rounded-3xl p-6 sm:p-8 text-white shadow-lg">
+        <div class="max-w-3xl space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-xs font-semibold">
+            📖 3 Passages • 40 Questions • 60 Mins • 30/40 = Band 7.0 • 35/40 = Band 8.0
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Academic Reading Laboratory</h2>
+          <p class="text-emerald-100 text-xs sm:text-sm leading-relaxed">
+            IELTS Academic Reading tests your ability to skim for gist, scan for specific details, identify the writer’s argument, and distinguish between stated facts, contradictions, and unmentioned details.
+          </p>
+        </div>
+      </div>
+
+      <!-- Pacing Formula & T/F/NG Matrix -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        
+        <!-- The 17-20-23 Pacing Rule -->
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2 mb-3">
+            <span>⏱️</span> The Golden 17-20-23 Pacing Protocol
+          </h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+            Most candidates spend 20 minutes on each passage, which leaves them running out of time on Passage 3. Use this weighted allocation:
+          </p>
+          <div class="space-y-2.5 text-xs">
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
+              <div>
+                <span class="font-bold text-slate-900 dark:text-white">Passage 1:</span>
+                <span class="text-slate-500 dark:text-slate-400 ml-1">Factual / Descriptive</span>
+              </div>
+              <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded">17 Minutes</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
+              <div>
+                <span class="font-bold text-slate-900 dark:text-white">Passage 2:</span>
+                <span class="text-slate-500 dark:text-slate-400 ml-1">Analytical / Academic Topic</span>
+              </div>
+              <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded">20 Minutes</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
+              <div>
+                <span class="font-bold text-slate-900 dark:text-white">Passage 3:</span>
+                <span class="text-slate-500 dark:text-slate-400 ml-1">Complex Arguments / Theories</span>
+              </div>
+              <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded">23 Minutes</span>
+            </div>
+          </div>
+          <div class="mt-4 p-3 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/50 rounded-xl text-[11px] text-rose-800 dark:text-rose-300">
+            <strong>CRITICAL RULE:</strong> There is NO extra 10 minutes at the end of the Reading test! Write your answers directly on the answer sheet as you go.
+          </div>
+        </div>
+
+        <!-- The True / False / Not Given Logic Flowchart -->
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2 mb-3">
+            <span>⚖️</span> The Ultimate T / F / NG Decision Matrix
+          </h3>
+          <div class="space-y-2.5 text-xs">
+            <div class="p-3 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 rounded-xl">
+              <span class="font-bold text-emerald-800 dark:text-emerald-300">TRUE (100% Confirmation)</span>
+              <p class="text-slate-600 dark:text-slate-300 mt-0.5">
+                The passage says the exact same thing using synonyms. All conditions and qualifiers match without discrepancy.
+              </p>
+            </div>
+            <div class="p-3 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800/60 rounded-xl">
+              <span class="font-bold text-rose-800 dark:text-rose-300">FALSE (Direct Contradiction)</span>
+              <p class="text-slate-600 dark:text-slate-300 mt-0.5">
+                The passage says the OPPOSITE or explicitly disproves the statement. (e.g. Passage says "decreased", statement says "increased").
+              </p>
+            </div>
+            <div class="p-3 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 rounded-xl">
+              <span class="font-bold text-amber-800 dark:text-amber-300">NOT GIVEN (Unverifiable Claim)</span>
+              <p class="text-slate-600 dark:text-slate-300 mt-0.5">
+                The topic might be mentioned, but the specific claim or relationship cannot be verified from the text alone. Never assume!
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Interactive Mini Reading Passage with T/F/NG Practice -->
+      <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+        <h3 class="font-bold text-base text-slate-900 dark:text-white mb-2">
+          📖 Interactive Academic Reading Drill: Avian Magnetoreception
+        </h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+          Read the short passage excerpt below, then evaluate the three statements as TRUE, FALSE, or NOT GIVEN.
+        </p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Passage Text -->
+          <div class="bg-slate-50 dark:bg-slate-900/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700 text-xs leading-relaxed text-slate-700 dark:text-slate-300 space-y-3 font-serif">
+            <p>
+              For decades, ornithologists marveled at how migratory birds execute journeys spanning thousands of miles across featureless oceans without deviating from their course. Recent biophysical research reveals that birds possess a specialized cryptochrome protein in their retinas, which enables them to perceive the Earth's geomagnetic field visually as patterns of light and shade.
+            </p>
+            <p>
+              In addition to visual magnetoreception, migratory species rely on redundant sensory systems. When overcast conditions obscure solar orientation, certain songbirds switch to listening to low-frequency infrasound waves generated by ocean swells and mountain ranges thousands of miles away.
+            </p>
+            <p>
+              However, modern electromagnetic smog and artificial light pollution around expanding urban centers have begun to interfere with these delicate biological compasses, causing nocturnal migrants to become disoriented and collide with glass high-rises.
+            </p>
+          </div>
+
+          <!-- Question Set -->
+          <div class="space-y-4">
+            <!-- Q1 -->
+            <div class="p-3 bg-slate-50 dark:bg-slate-700/40 rounded-xl border border-slate-200 dark:border-slate-600 text-xs">
+              <p class="font-semibold text-slate-800 dark:text-slate-200 mb-2">
+                1. The geomagnetic field of the Earth provides visual directional cues to migratory birds via retinal proteins.
+              </p>
+              <div class="flex items-center gap-4">
+                <label class="flex items-center gap-1.5 cursor-pointer">
+                  <input type="radio" name="reading-q1" value="TRUE" class="text-emerald-600"> <span>TRUE</span>
+                </label>
+                <label class="flex items-center gap-1.5 cursor-pointer">
+                  <input type="radio" name="reading-q1" value="FALSE" class="text-emerald-600"> <span>FALSE</span>
+                </label>
+                <label class="flex items-center gap-1.5 cursor-pointer">
+                  <input type="radio" name="reading-q1" value="NOT GIVEN" class="text-emerald-600"> <span>NOT GIVEN</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="p-3 bg-slate-50 dark:bg-slate-700/40 rounded-xl border border-slate-200 dark:border-slate-600 text-xs">
+              <p class="font-semibold text-slate-800 dark:text-slate-200 mb-2">
+                2. Heavy cloud cover prevents migratory songbirds from navigating entirely.
+              </p>
+              <div class="flex items-center gap-4">
+                <label class="flex items-center gap-1.5 cursor-pointer">
+                  <input type="radio" name="reading-q2" value="TRUE" class="text-emerald-600"> <span>TRUE</span>
+                </label>
+                <label class="flex items-center gap-1.5 cursor-pointer">
+                  <input type="radio" name="reading-q2" value="FALSE" class="text-emerald-600"> <span>FALSE</span>
+                </label>
+                <label class="flex items-center gap-1.5 cursor-pointer">
+                  <input type="radio" name="reading-q2" value="NOT GIVEN" class="text-emerald-600"> <span>NOT GIVEN</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="p-3 bg-slate-50 dark:bg-slate-700/40 rounded-xl border border-slate-200 dark:border-slate-600 text-xs">
+              <p class="font-semibold text-slate-800 dark:text-slate-200 mb-2">
+                3. Over 40% of nocturnal migratory birds are affected by urban glass collisions annually.
+              </p>
+              <div class="flex items-center gap-4">
+                <label class="flex items-center gap-1.5 cursor-pointer">
+                  <input type="radio" name="reading-q3" value="TRUE" class="text-emerald-600"> <span>TRUE</span>
+                </label>
+                <label class="flex items-center gap-1.5 cursor-pointer">
+                  <input type="radio" name="reading-q3" value="FALSE" class="text-emerald-600"> <span>FALSE</span>
+                </label>
+                <label class="flex items-center gap-1.5 cursor-pointer">
+                  <input type="radio" name="reading-q3" value="NOT GIVEN" class="text-emerald-600"> <span>NOT GIVEN</span>
+                </label>
+              </div>
+            </div>
+
+            <button id="check-reading-answers-btn" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold shadow-sm transition">
+              Evaluate Answers & View Explanations
+            </button>
+
+            <div id="reading-results-div" class="hidden"></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 4: WRITING STUDIO -->
+    <!-- ============================================================== -->
+    <section id="tab-writing" class="tab-panel hidden space-y-6">
+      
+      <!-- Writing Banner -->
+      <div class="bg-gradient-to-r from-amber-600 to-orange-700 rounded-3xl p-6 sm:p-8 text-white shadow-lg">
+        <div class="max-w-3xl space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-xs font-semibold">
+            ✍️ Task 1 (150+ words, 20 mins) • Task 2 (250+ words, 40 mins) • 66.6% Weight on Task 2
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Academic Writing Studio & Rubrics</h2>
+          <p class="text-amber-100 text-xs sm:text-sm leading-relaxed">
+            Master the exact 4-paragraph blueprints required for Band 8+. Avoid common traps like omitting the Overview in Task 1 or writing unbalanced body paragraphs in Task 2.
+          </p>
+        </div>
+      </div>
+
+      <!-- Assessment Criteria Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <span class="text-xs font-bold text-amber-600 dark:text-amber-400">TR / TA (25%)</span>
+          <h4 class="font-bold text-xs text-slate-900 dark:text-white mt-1 mb-1">Task Response / Achievement</h4>
+          <p class="text-[11px] text-slate-500 leading-normal">
+            Fully addresses all parts of prompt; clear overview in Task 1; well-developed position throughout in Task 2.
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <span class="text-xs font-bold text-amber-600 dark:text-amber-400">CC (25%)</span>
+          <h4 class="font-bold text-xs text-slate-900 dark:text-white mt-1 mb-1">Coherence & Cohesion</h4>
+          <p class="text-[11px] text-slate-500 leading-normal">
+            Logical paragraph sequencing, PEEL structure, natural linking devices without mechanical over-use.
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <span class="text-xs font-bold text-amber-600 dark:text-amber-400">LR (25%)</span>
+          <h4 class="font-bold text-xs text-slate-900 dark:text-white mt-1 mb-1">Lexical Resource</h4>
+          <p class="text-[11px] text-slate-500 leading-normal">
+            Wide range of academic vocabulary, precise natural collocations, minimal spelling slips.
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <span class="text-xs font-bold text-amber-600 dark:text-amber-400">GRA (25%)</span>
+          <h4 class="font-bold text-xs text-slate-900 dark:text-white mt-1 mb-1">Grammatical Range & Accuracy</h4>
+          <p class="text-[11px] text-slate-500 leading-normal">
+            Mix of complex sentences (inversions, conditionals, passive voice) with high proportion of error-free sentences.
+          </p>
+        </div>
+      </div>
+
+      <!-- Task 1 & Task 2 Formulas Reference -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        
+        <!-- Task 1 Blueprint -->
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white">Task 1: Academic Report Blueprint</h4>
+            <span class="text-xs font-mono bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded">150+ Words</span>
+          </div>
+          <ol class="space-y-2 text-xs text-slate-700 dark:text-slate-300 list-decimal list-inside">
+            <li><strong>Introduction (1-2 sentences):</strong> Paraphrase prompt (e.g., <em>The line graph depicts...</em>).</li>
+            <li><strong>Overview (2 sentences):</strong> Highlight 2-3 main trends or key changes. <em>NO NUMBERS HERE!</em></li>
+            <li><strong>Body Paragraph 1 (3-4 sentences):</strong> Detailed reporting of Group A data with numbers and years.</li>
+            <li><strong>Body Paragraph 2 (3-4 sentences):</strong> Detailed reporting of Group B data with comparisons.</li>
+          </ol>
+          <div class="mt-3 p-2.5 bg-amber-50 dark:bg-amber-950/40 rounded-xl text-[11px] text-amber-900 dark:text-amber-200">
+            <strong>Trend Verbs:</strong> plummeted, surged, fluctuated wildly, plateaued, stabilized, outstripped.
+          </div>
+        </div>
+
+        <!-- Task 2 Blueprint -->
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white">Task 2: Academic Essay Blueprint</h4>
+            <span class="text-xs font-mono bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded">250+ Words</span>
+          </div>
+          <ol class="space-y-2 text-xs text-slate-700 dark:text-slate-300 list-decimal list-inside">
+            <li><strong>Introduction (2-3 sentences):</strong> General background paraphrase + Clear Thesis statement.</li>
+            <li><strong>Body Paragraph 1 (4-5 sentences):</strong> <em>PEEL</em> (Point -> Explain -> Concrete Example -> Link).</li>
+            <li><strong>Body Paragraph 2 (4-5 sentences):</strong> <em>PEEL</em> (Opposing argument or second key argument).</li>
+            <li><strong>Conclusion (2 sentences):</strong> Restate thesis in fresh words + summarize main takeaways.</li>
+          </ol>
+          <div class="mt-3 p-2.5 bg-amber-50 dark:bg-amber-950/40 rounded-xl text-[11px] text-amber-900 dark:text-amber-200">
+            <strong>Cohesive Linkers:</strong> Furthermore, In stark contrast, Consequently, Notwithstanding, As an illustration.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Live Essay Drafting Canvas -->
+      <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200 dark:border-slate-700 mb-4">
+          <div>
+            <h3 class="font-bold text-base text-slate-900 dark:text-white">Writing Studio & Self-Evaluator</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Practice writing with live word count tracking and band descriptor check.</p>
+          </div>
+          <!-- Prompt Selector -->
+          <div class="flex items-center gap-2">
+            <label class="text-xs text-slate-500">Prompt:</label>
+            <select id="writing-prompt-select" class="bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg px-2.5 py-1 text-xs text-slate-800 dark:text-slate-200 focus:ring-1 focus:ring-amber-500">
+              <option value="task2-tech">Task 2: Artificial Intelligence & Employment</option>
+              <option value="task2-edu">Task 2: Higher Education & Job Skills</option>
+              <option value="task1-line">Task 1: Renewable Energy Consumption</option>
+              <option value="task1-process">Task 1: Plastic Recycling Process</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Prompt Text Display -->
+        <div id="prompt-description" class="p-3.5 bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/40 rounded-xl text-xs text-amber-950 dark:text-amber-200 font-medium mb-4 leading-relaxed">
+          Some people believe that artificial intelligence will create more leisure time for humans, while others argue it will cause widespread unemployment and social inequality. Discuss both views and give your own opinion. (Write at least 250 words)
+        </div>
+
+        <!-- Textarea Canvas -->
+        <div class="relative">
+          <textarea id="essay-textarea" rows="12" placeholder="Draft your introduction, body paragraphs, and conclusion here..." class="w-full bg-slate-50 dark:bg-slate-900/70 border border-slate-300 dark:border-slate-700 rounded-2xl p-4 text-xs sm:text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-500 leading-relaxed font-sans"></textarea>
+          
+          <!-- Live Word & Paragraph Counters -->
+          <div class="flex items-center justify-between mt-2 px-1 text-xs">
+            <div class="flex items-center gap-4">
+              <span id="word-count-display" class="font-semibold text-rose-500">0 words</span>
+              <span class="text-slate-400">•</span>
+              <span id="paragraph-count-display" class="text-slate-500">0 paragraphs</span>
+            </div>
+            <span class="text-[11px] text-slate-400">Target: Task 1 ≥ 150 words | Task 2 ≥ 250 words</span>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 5: SPEAKING SIMULATOR -->
+    <!-- ============================================================== -->
+    <section id="tab-speaking" class="tab-panel hidden space-y-6">
+      
+      <!-- Speaking Banner -->
+      <div class="bg-gradient-to-r from-pink-600 to-rose-700 rounded-3xl p-6 sm:p-8 text-white shadow-lg">
+        <div class="max-w-3xl space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-xs font-semibold">
+            🗣️ 11-14 Mins • 3 Distinct Parts • Fluency, Lexical Resource, Grammar, Pronunciation
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Speaking Interview Simulator</h2>
+          <p class="text-pink-100 text-xs sm:text-sm leading-relaxed">
+            Practice Part 2 Cue Cards with realistic 60-second preparation countdowns, 2-minute speaking timers, note-taking pads, and built-in voice recording to analyze your hesitation, fluency, and sentence stress.
+          </p>
+        </div>
+      </div>
+
+      <!-- Speaking Part 1, 2, 3 Strategy Matrix -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <span class="text-xs font-bold text-pink-600 dark:text-pink-400 uppercase">Part 1 (4-5 Mins)</span>
+          <h4 class="font-bold text-sm text-slate-900 dark:text-white mt-1 mb-2">The 1-2-3 Formula</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+            Direct Answer + Reason ('because...') + Detail/Example ('In fact...'). Avoid 1-word answers; speak for 15-20 seconds.
+          </p>
+          <div class="text-[11px] text-pink-800 dark:text-pink-300 bg-pink-50 dark:bg-pink-950/50 p-2 rounded-lg">
+            "Yes, definitely. I find cycling great to blow off steam, especially on weekends."
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <span class="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase">Part 2 (3-4 Mins)</span>
+          <h4 class="font-bold text-sm text-slate-900 dark:text-white mt-1 mb-2">The Story Timeline</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+            Use the 1-min prep to write 6-8 key collocations. Divide speech into Past context (30s), Main Event (60s), and Personal Reflection (30s).
+          </p>
+          <div class="text-[11px] text-rose-800 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/50 p-2 rounded-lg">
+            Never stop speaking early! Continue until the examiner politely gestures for you to stop.
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <span class="text-xs font-bold text-purple-600 dark:text-purple-400 uppercase">Part 3 (4-5 Mins)</span>
+          <h4 class="font-bold text-sm text-slate-900 dark:text-white mt-1 mb-2">Analytical Societal Discourse</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+            No personal anecdotes about yourself or family! Analyze trends across society, evaluate pros and cons, and speculate about the future.
+          </p>
+          <div class="text-[11px] text-purple-800 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/50 p-2 rounded-lg">
+            "Generally speaking, younger generations gravitate towards flexibility, whereas..."
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Cue Card Simulator -->
+      <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-700 mb-5">
+          <div>
+            <h3 class="font-bold text-base text-slate-900 dark:text-white">Part 2 Cue Card Station</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Generate a random topic card, start your 1-min preparation, then speak for 2 minutes.</p>
+          </div>
+          <button id="randomize-cue-card-btn" class="px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white rounded-xl text-xs font-semibold shadow-sm transition flex items-center justify-center gap-1.5">
+            <span>🎲</span> Randomize Cue Card
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          
+          <!-- Cue Card Display -->
+          <div class="bg-pink-50/60 dark:bg-pink-950/30 border border-pink-200 dark:border-pink-900/50 p-5 rounded-2xl">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-pink-600 dark:text-pink-400">
+              Candidate Task Card
+            </span>
+            <h4 id="cue-card-title" class="text-base font-bold text-slate-900 dark:text-white mt-1 mb-3">
+              Describe a person who has strongly influenced your life choices
+            </h4>
+            <p class="text-xs text-slate-600 dark:text-slate-300 font-medium mb-2">You should say:</p>
+            <ul id="cue-card-prompts" class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300 mb-4">
+              <!-- Prompts injected dynamically -->
+            </ul>
+            <p class="text-[11px] text-slate-500 italic">
+              You have 1 minute to think about what you are going to say. You can make some notes to help you if you wish.
+            </p>
+          </div>
+
+          <!-- Note-Taking Pad & Interactive Timers -->
+          <div class="space-y-4">
+            
+            <!-- Timers Panel -->
+            <div class="grid grid-cols-2 gap-3">
+              <!-- 1-Min Prep Timer -->
+              <div class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
+                <span class="text-[11px] font-semibold text-slate-500 block mb-1">1-Min Prep Time</span>
+                <span id="prep-timer-display" class="font-mono text-xl font-bold text-indigo-600 dark:text-indigo-400 block mb-2">01:00</span>
+                <button id="start-prep-timer-btn" class="w-full py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold transition">
+                  Start Prep
+                </button>
+              </div>
+
+              <!-- 2-Min Speaking Timer -->
+              <div class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
+                <span class="text-[11px] font-semibold text-slate-500 block mb-1">2-Min Speaking Time</span>
+                <span id="speaking-timer-display" class="font-mono text-xl font-bold text-pink-600 dark:text-pink-400 block mb-2">02:00</span>
+                <button id="start-speaking-timer-btn" class="w-full py-1 bg-pink-600 hover:bg-pink-700 text-white rounded-lg text-xs font-semibold transition">
+                  Start Speaking
+                </button>
+              </div>
+            </div>
+
+            <!-- Scratchpad for Notes -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                Prep Scrap Paper (Jot 6-8 keywords during your 1 minute):
+              </label>
+              <textarea id="speaking-notes-area" rows="3" placeholder="e.g. mentor, unwavering integrity, career guidance, pivotal moment, lifelong impact..." class="w-full bg-slate-50 dark:bg-slate-900/60 border border-slate-300 dark:border-slate-700 rounded-xl p-2.5 text-xs text-slate-800 dark:text-slate-200 focus:ring-1 focus:ring-pink-500"></textarea>
+            </div>
+
+            <!-- Voice Recorder Component -->
+            <div class="p-4 bg-slate-50 dark:bg-slate-900/60 rounded-xl border border-slate-200 dark:border-slate-700">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                  🎙️ Self-Recorder & Playback
+                </span>
+                <span id="recording-status-badge" class="text-xs text-slate-400">Ready to record</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button id="record-speaking-btn" class="px-3.5 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-semibold transition flex items-center gap-1">
+                  <span>●</span> Record My Voice
+                </button>
+                <button id="stop-recording-btn" class="hidden px-3.5 py-1.5 bg-slate-800 hover:bg-slate-900 text-white rounded-lg text-xs font-semibold transition flex items-center gap-1">
+                  <span>■</span> Stop Recording
+                </button>
+              </div>
+              <audio id="recording-audio-player" controls class="hidden w-full mt-3 h-8"></audio>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 6: BAND SCORE CALCULATOR -->
+    <!-- ============================================================== -->
+    <section id="tab-calculator" class="tab-panel hidden space-y-6">
+      
+      <!-- Calculator Banner -->
+      <div class="bg-gradient-to-r from-purple-700 to-indigo-800 rounded-3xl p-6 sm:p-8 text-white shadow-lg">
+        <div class="max-w-3xl space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-xs font-semibold">
+            🧮 Official Cambridge IELTS Conversion Tables & Half-Band Rounding Rules
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">IELTS Band Score Calculator</h2>
+          <p class="text-purple-100 text-xs sm:text-sm leading-relaxed">
+            Enter your raw scores (0-40) for Listening and Reading, select your estimated Writing and Speaking band scores, and get an instantaneous official overall band computation with CEFR level analysis.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Score Input Controls -->
+        <div class="lg:col-span-2 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-5">
+          <h3 class="font-bold text-base text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-3">
+            Individual Skill Scores
+          </h3>
+
+          <!-- Listening -->
+          <div class="space-y-1.5">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-bold text-slate-700 dark:text-slate-300">🎧 Listening Raw Score (0 - 40 questions):</span>
+              <span id="calc-listening-band" class="font-mono font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 rounded">Band 7.5</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <input type="range" id="calc-listening-raw" min="0" max="40" value="32" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-600">
+              <span class="font-mono text-xs w-8 text-right font-bold text-slate-700 dark:text-slate-300" id="calc-listening-raw-display">32</span>
+            </div>
+          </div>
+
+          <!-- Reading Type & Raw -->
+          <div class="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-700/60">
+            <div class="flex justify-between items-center text-xs">
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-700 dark:text-slate-300">📖 Reading Raw Score (0 - 40):</span>
+                <select id="calc-reading-type" class="text-[11px] bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded px-1.5 py-0.5 text-slate-700 dark:text-slate-200">
+                  <option value="academic">Academic</option>
+                  <option value="general">General Training</option>
+                </select>
+              </div>
+              <span id="calc-reading-band" class="font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded">Band 7.0</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <input type="range" id="calc-reading-raw" min="0" max="40" value="30" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-600">
+              <span class="font-mono text-xs w-8 text-right font-bold text-slate-700 dark:text-slate-300" id="calc-reading-raw-display">30</span>
+            </div>
+          </div>
+
+          <!-- Writing Band Selector -->
+          <div class="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-700/60">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-bold text-slate-700 dark:text-slate-300">✍️ Writing Estimated Band:</span>
+              <span class="text-xs text-slate-400">(Task 1 + Task 2 weighted)</span>
+            </div>
+            <select id="calc-writing-band" class="w-full bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:ring-1 focus:ring-amber-500">
+              <option value="5.5">Band 5.5 (Modest)</option>
+              <option value="6.0">Band 6.0 (Competent)</option>
+              <option value="6.5">Band 6.5 (Strong Competent)</option>
+              <option value="7.0" selected>Band 7.0 (Good User)</option>
+              <option value="7.5">Band 7.5 (Very Good User)</option>
+              <option value="8.0">Band 8.0 (Very Good User - Near Native)</option>
+              <option value="8.5">Band 8.5 (Expert User)</option>
+              <option value="9.0">Band 9.0 (Expert User - Flawless)</option>
+            </select>
+          </div>
+
+          <!-- Speaking Band Selector -->
+          <div class="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-700/60">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-bold text-slate-700 dark:text-slate-300">🗣️ Speaking Estimated Band:</span>
+              <span class="text-xs text-slate-400">(Parts 1, 2, 3 interview)</span>
+            </div>
+            <select id="calc-speaking-band" class="w-full bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:ring-1 focus:ring-pink-500">
+              <option value="5.5">Band 5.5 (Modest)</option>
+              <option value="6.0">Band 6.0 (Competent)</option>
+              <option value="6.5">Band 6.5 (Strong Competent)</option>
+              <option value="7.0">Band 7.0 (Good User)</option>
+              <option value="7.5" selected>Band 7.5 (Very Good User)</option>
+              <option value="8.0">Band 8.0 (Very Good User - Near Native)</option>
+              <option value="8.5">Band 8.5 (Expert User)</option>
+              <option value="9.0">Band 9.0 (Expert User - Flawless)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Overall Score Card Output -->
+        <div class="bg-gradient-to-br from-indigo-900 to-slate-900 text-white p-6 rounded-2xl border border-indigo-800/50 shadow-md flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-300 block mb-2">
+              Official Projected Score
+            </span>
+            <div class="flex items-baseline gap-2 mb-2">
+              <span id="calc-overall-band-display" class="font-extrabold text-5xl sm:text-6xl text-white tracking-tight">
+                7.5
+              </span>
+              <span class="text-indigo-300 text-sm font-semibold">/ 9.0 Band</span>
+            </div>
+            <div id="calc-cefr-level" class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/30 text-indigo-200 border border-indigo-400/30 mb-4">
+              C1 (Advanced Operational)
+            </div>
+            <p id="calc-band-feedback" class="text-xs text-indigo-100 leading-relaxed">
+              Exceeds prerequisites for Top 20 Global Universities (Oxford, Cambridge, Harvard, MIT) and Tier 1 medical/legal registrations.
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-indigo-800/80 text-[11px] text-indigo-300/80 leading-snug">
+            <strong>Official Rounding Rule:</strong> If the 4-skill average ends in .25, it rounds UP to .5. If it ends in .75, it rounds UP to the next whole band.
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 7: ERROR JOURNAL & NOTES -->
+    <!-- ============================================================== -->
+    <section id="tab-journal" class="tab-panel hidden space-y-6">
+      
+      <!-- Journal Banner -->
+      <div class="bg-gradient-to-r from-slate-800 to-indigo-950 rounded-3xl p-6 sm:p-8 text-white shadow-lg">
+        <div class="max-w-3xl space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-xs font-semibold">
+            📓 The Single Most Important Habit of Band 8+ Candidates
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Personal Error Journal & Study Notes</h2>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+            Taking practice tests without logging your mistakes produces zero score improvement. Every time you miss an answer in Reading or Listening, log the root cause and remedy below.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Error Log Entries -->
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700">
+            <div>
+              <h3 class="font-bold text-base text-slate-900 dark:text-white">Mistake Dissection Log</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Track recurring patterns across all 4 skills.</p>
+            </div>
+            <button id="add-error-btn" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold transition flex items-center gap-1 shadow-sm">
+              <span>+</span> Add Mistake Entry
+            </button>
+          </div>
+
+          <div id="error-log-container" class="space-y-2.5 max-h-[460px] overflow-y-auto pr-1">
+            <!-- Injected via JavaScript -->
+          </div>
+        </div>
+
+        <!-- Personal Scratchpad / Strategy Notes -->
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700 mb-3">
+              <div>
+                <h3 class="font-bold text-base text-slate-900 dark:text-white">Study Strategy Notebook</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Auto-saves locally in your browser.</p>
+              </div>
+              <button id="save-journal-btn" class="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold transition shadow-sm">
+                Save Notes
+              </button>
+            </div>
+
+            <textarea id="journal-textarea" rows="16" placeholder="Write down your weekly goals, reflections, key vocabulary words to memorize, or notes from Cambridge answer keys..." class="w-full bg-slate-50 dark:bg-slate-900/60 border border-slate-300 dark:border-slate-700 rounded-xl p-3.5 text-xs sm:text-sm text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500 font-sans leading-relaxed"></textarea>
+          </div>
+
+          <div class="mt-3 text-[11px] text-slate-400 flex items-center justify-between">
+            <span>💾 Data persists automatically across browser sessions.</span>
+            <span>IELTS Master 90 System</span>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-16 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-8 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+      <p class="font-semibold text-slate-700 dark:text-slate-300">
+        IELTS Master 90 • Complete 4-Skill Preparation & 90-Day Roadmap Platform
+      </p>
+      <p>
+        Aligned with official Cambridge English, British Council, and IDP IELTS Academic standards.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="roadmap-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
